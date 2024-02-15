@@ -46,10 +46,10 @@ export class UsersService {
     return this.userRepository.delete(id);
   }
 
-  generateAuthTokenService(username: string, password: string){
+  async generateAuthTokenService(username: string, password: string){
     const payload = { username: username, password: password };
     return {
-      access_token: this.jwtService.signAsync(payload),
+      access_token: await this.jwtService.signAsync(payload),
     };
   }
 }
